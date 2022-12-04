@@ -1,24 +1,19 @@
 import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import WearPage from "../pages/WearPage";
-import HomePage from "../pages/HomePage"
+import HomePage from "../pages/HomePage";
 
-const Stack = createNativeStackNavigator();
+const Tab = createMaterialTopTabNavigator();
 
 export const AppNavigator = () => {
   return (
-    <Stack.Navigator
-      screenOptions={{ headerShown: false }}
-      initialRouteName="Home"
-    >
-      <Stack.Group>
-        <Stack.Screen name="Home" component={HomePage} />
-        <Stack.Screen name="Wear" component={WearPage} />
-      </Stack.Group>
-    </Stack.Navigator>
+    <Tab.Navigator initialRouteName="Home" tabBarPosition="bottom">
+      <Tab.Group>
+        <Tab.Screen name="Home" component={HomePage} />
+        <Tab.Screen name="Wear" component={WearPage} />
+      </Tab.Group>
+    </Tab.Navigator>
   );
 };
 
 export default AppNavigator;
-
-

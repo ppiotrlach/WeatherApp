@@ -5,14 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 const WearPage = ({ route }) => {
   const navigation = useNavigation();
 
-
-  return (
-    <View style={styles.container}>
-      
-
-      <Button onPress={() => navigation.navigate("Home")} title="back" />
-    </View>
-  );
+  return <View style={styles.container}></View>;
 };
 
 const styles = StyleSheet.create({
