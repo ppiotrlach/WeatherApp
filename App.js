@@ -2,6 +2,7 @@ import React from "react";
 import AppNavigator from "./components/AppNavigator";
 import { NavigationContainer } from "@react-navigation/native";
 import { useFonts } from "expo-font";
+import { setCustomText } from "react-native-global-props";
 
 export default function App() {
   const [loaded] = useFonts({
@@ -12,6 +13,14 @@ export default function App() {
   if (!loaded) {
     return null;
   }
+
+  const customTextProps = {
+    style: {
+      fontFamily: "PoppinsRegular",
+    },
+  };
+
+  setCustomText(customTextProps);
 
   return (
     <NavigationContainer>
