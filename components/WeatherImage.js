@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, View, Image, Text } from "react-native";
 
-const WeatherImage = ({ input_image }) => {
+const WeatherImage = ({ inputImage }) => {
   return (
     <View style={styles.centered_container}>
       <Image
         style={styles.image}
-        source={{ uri: `https:${input_image}`.replace("64x64", "128x128") }}
+        source={{ uri: `https:${inputImage}`.replace("64x64", "128x128") }}
       />
     </View>
   );

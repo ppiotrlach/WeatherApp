@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import Device from "expo-device";
 import * as Location from "expo-location";
@@ -6,11 +6,11 @@ import WEATHER_API_KEY from "../secrets";
 import TextBanner from "../components/TextBanner";
 import WeatherImage from "../components/WeatherImage";
 import Temperature from "../components/Temperature";
+import { WeatherContext } from "../WeatherContext";
 
 const HomePage = () => {
-  const [errorMsg, setErrorMsg] = useState(null);
-  const [text, setText] = useState("Waiting...");
   const [locationData, setLocationData] = useState(null);
+  const { weatherData, setWeatherData } = useContext(WeatherContext);
 
   useEffect(() => {
     (async () => {
@@ -29,24 +29,22 @@ const HomePage = () => {
         .then((data) => data.json())
         .then((data) => {
           setLocationData(data);
-          console.log(data);
+
+          setWeatherData({
+            temperature: data.forecast.forecastday[0].day.avgtemp_c,
+            rainChance: data.forecast.forecastday[0].day.daily_chance_of_rain,
+          });
         })
         .catch((err) => console.error(err));
     })();
   }, []);
-
-  useEffect(() => {
-    if (errorMsg) {
-      setText(errorMsg);
-    }
-  }, [errorMsg, setText]);
 
   return (
     <View style={styles.container}>
       {!!locationData && (
         <>
           <TextBanner text={locationData.location.name} />
-          <WeatherImage input_image={locationData.current.condition.icon} />
+          <WeatherImage inputImage={locationData.current.condition.icon} />
           <Temperature
             current={locationData.current.temp_c}
             min={locationData.forecast.forecastday[0].day.mintemp_c}
