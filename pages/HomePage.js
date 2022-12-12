@@ -49,6 +49,14 @@ const HomePage = () => {
             current={locationData.current.temp_c}
             min={locationData.forecast.forecastday[0].day.mintemp_c}
             max={locationData.forecast.forecastday[0].day.maxtemp_c}
+            rainChance={
+              locationData.forecast.forecastday[0].day.daily_chance_of_rain
+            }
+            snowChance={
+              locationData.forecast.forecastday[0].day.daily_chance_of_snow
+            }
+            maxWind={locationData.forecast.forecastday[0].day.maxwind_kph}
+            avgHumidity={locationData.forecast.forecastday[0].day.avghumidity}
           />
         </>
       )}

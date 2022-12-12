@@ -1,7 +1,15 @@
 import React from "react";
 import { Text, StyleSheet, View } from "react-native";
 
-const Temperature = ({ current, min, max }) => {
+const Temperature = ({
+  current,
+  min,
+  max,
+  rainChance,
+  snowChance,
+  maxWind,
+  avgHumidity,
+}) => {
   return (
     <View style={styles.centered_container}>
       <View style={styles.centered_container}>
@@ -15,8 +23,24 @@ const Temperature = ({ current, min, max }) => {
         </View>
         <View style={styles.centered_container}>
           <Text style={styles.min_max_text}>MAX</Text>
-          <Text>{max} °C</Text>
+          <Text>{max}°C</Text>
         </View>
+      </View>
+
+      <View style={styles.centered_container}>
+        <Text>🌧 {rainChance}%</Text>
+      </View>
+      {snowChance > 0 && (
+        <View style={styles.centered_container}>
+          <Text>🌨 {snowChance}%</Text>
+        </View>
+      )}
+
+      <View style={styles.centered_container}>
+        <Text>💨 {maxWind}km/h</Text>
+      </View>
+      <View style={styles.centered_container}>
+        <Text>💧 {avgHumidity}%</Text>
       </View>
     </View>
   );
