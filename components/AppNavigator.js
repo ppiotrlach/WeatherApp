@@ -15,7 +15,7 @@ export const AppNavigator = () => {
         <Tab.Screen
           name="Wear"
           component={WearPage}
-          // screenOptions={{ lazy: false }}
+          screenOptions={{ lazy: true }}
         />
       </Tab.Group>
     </Tab.Navigator>

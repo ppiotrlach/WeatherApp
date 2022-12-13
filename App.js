@@ -7,6 +7,7 @@ import { initialState, WeatherContext } from "./WeatherContext";
 
 export default function App() {
   const [weatherData, setWeatherData] = useState(initialState);
+  const [city, setCity] = useState("");
   const [loaded] = useFonts({
     PoppinsRegular: require("./assets/fonts/Poppins-Regular.ttf"),
     PoppinsBold: require("./assets/fonts/Poppins-Bold.ttf"),
@@ -29,6 +30,8 @@ export default function App() {
       value={{
         weatherData: weatherData,
         setWeatherData: setWeatherData,
+        city: city,
+        setCity: setCity,
       }}
     >
       <NavigationContainer>

@@ -3,7 +3,7 @@ import { Text, StyleSheet, View } from "react-native";
 
 const TextBanner = ({ text }) => {
   return (
-    <View>
+    <View style={styles.center}>
       <Text style={styles.text}>{text}</Text>
     </View>
   );
@@ -12,6 +12,10 @@ const TextBanner = ({ text }) => {
 const styles = StyleSheet.create({
   text: {
     fontSize: 36,
+  },
+  center: {
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 

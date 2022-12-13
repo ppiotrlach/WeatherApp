@@ -1,8 +1,11 @@
 import React from "react";
 
 export const initialState = {
-  temperature: 0,
-  rainChance: 0,
+  weatherData: {
+    temperature: 0,
+    rainChance: 0,
+  },
+  setWeatherData: null,
 };
 
 export const WeatherContext = React.createContext(initialState);
